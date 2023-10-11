@@ -19,11 +19,19 @@ const TopBar = () => {
       </button>
       <span className="flex-grow"></span>
       <div className="flex flex-row gap-4">
-        <a href="https://github.com/trostalski/vhipple" target="_blank">
-          <AiFillGithub size={32} style={{ color: "white" }} />
+        <a
+          href="https://github.com/trostalski/fhir-views"
+          target="_blank"
+          className="transition hover:text-complementary-primary-color"
+        >
+          <AiFillGithub size={32} />
         </a>
-        <a href="https://healthnerd.solutions" target="_blank">
-          <RiAncientGateFill size={32} style={{ color: "white" }} />
+        <a
+          href="https://healthnerd.solutions"
+          target="_blank"
+          className="transition hover:text-complementary-primary-color"
+        >
+          <RiAncientGateFill size={32} />
         </a>
       </div>
     </header>
