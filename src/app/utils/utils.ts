@@ -28,3 +28,7 @@ export const handleExportClick = (
   a.click();
   window.URL.revokeObjectURL(url);
 };
+
+export const getUniqueId = () => {
+  return Math.random().toString(36).substr(2, 9);
+};

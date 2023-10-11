@@ -17,3 +17,10 @@ export interface ViewDefinition {
   name?: string;
   where?: WhereDefinition[];
 }
+
+export interface Bundle {
+  id?: string;
+  resourceType: string;
+  type: string;
+  entry: { resource: { resourceType: string; id?: string } }[];
+}

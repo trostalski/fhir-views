@@ -7,7 +7,8 @@
     --main-bg: #ecfaff; /* A very light blue color for the main background */
     --primary-color: #2196f3; /* A bright blue color for primary elements */
     --secondary-color: #03a9f4; /* A slightly lighter blue color for secondary elements */
-    --complementary-color: #ffc60a; /* An orange color for complementary elements */
+    --complementary-primary-color: #ff9800; /* An orange color for complementary elements */
+    --complementary-secondary-color: #ffc60a; /* A slightly darker orange color for complementary elements */
     --text-primary-color: #333; /* Dark text color for primary content */
     --text-secondary-color: #909090; /* Slightly lighter text color for secondary content */
     --cancel-button-color: #e8382b; /* A red color for cancel buttons */

@@ -1,5 +1,13 @@
 import { ViewDefinition } from "./types";
 
+export const emptyViewDef: ViewDefinition = {
+  id: "",
+  name: "",
+  resource: "",
+  select: [],
+  where: [],
+};
+
 export const activeConditionsViewDef: ViewDefinition = {
   id: "1",
   name: "Active conditions",

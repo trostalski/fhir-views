@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 
 interface ModalWrapperProps {
   showModal: boolean;
-  setShowModal: (showModal: boolean) => void;
+  handleCloseModal: () => void;
   children: React.ReactNode;
   modalWidth?: string;
   modalHeight?: string;
 }
 
 const ModalWrapper = (props: ModalWrapperProps) => {
-  const { showModal, setShowModal, children, modalWidth, modalHeight } = props;
+  const { showModal, handleCloseModal, children, modalWidth, modalHeight } =
+    props;
   useEffect(() => {
     // close on escape
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setShowModal(false);
+        handleCloseModal();
       }
     };
     window.addEventListener("keydown", handleEscape);
@@ -32,14 +33,14 @@ const ModalWrapper = (props: ModalWrapperProps) => {
       role="dialog"
       aria-modal="true"
     >
-      <div className="flex items-center justify-center h-full min-h-screen pt-4 px-4 pb-20 text-center p-0">
+      <div className="flex items-center justify-center h-full min-h-screen pt-4 px-4 pb-8 text-center p-0">
         {/* <!--
           Background overlay, show/hide based on modal state.
           }--> */}
         <div
           className="fixed inset-0 bg-gray-500 bg-opacity-50 transition-opacity"
           aria-hidden="true"
-          onClick={() => setShowModal(false)}
+          onClick={handleCloseModal}
         ></div>
         <span className="hidden align-middle h-screen" aria-hidden="true">
           &#8203;

@@ -14,11 +14,12 @@ export type ViewResult = any;
 interface ViewContainerProps {
   viewDef: ViewDefinition;
   viewResult: ViewResult | undefined;
+  handleClearViewResult: () => void;
+  handleShowModal: () => void;
 }
 
 const ViewContainer = (props: ViewContainerProps) => {
-  const { viewDef, viewResult } = props;
-  const [showModal, setShowModal] = useState(false);
+  const { viewDef, viewResult, handleClearViewResult, handleShowModal } = props;
 
   return (
     <div className="flex flex-col max-h-[90vh] pb-12">
@@ -26,34 +27,30 @@ const ViewContainer = (props: ViewContainerProps) => {
         <div className="flex flex-row w-full gap-4">
           <span className="font-bold">{"Result"}</span>
           <div className="flex-grow" />
-          <button className="transition hover:text-button-hover-color">
-            <AiOutlineLineChart size={20} />
-          </button>
           <button
-            className="transition hover:text-button-hover-color"
-            onClick={() => {}}
+            className="transition hover:text-primary-color"
+            onClick={handleShowModal}
+            title="Edit View"
           >
             <IoSettingsOutline size={20} />
           </button>
           <button
-            className="transition hover:text-accent-color"
-            onClick={() => {}}
+            onClick={() => handleExportClick(viewResult, viewDef.name)}
+            className="transition hover:text-primary-color"
+            title="Export CSV"
+          >
+            <BiExport size={20} />
+          </button>
+          <button
+            className="transition hover:text-cancel-button-color"
+            onClick={handleClearViewResult}
+            title="Clear ViewResult"
           >
             <AiOutlineClose size={20} />
-          </button>
-          <button onClick={() => handleExportClick(viewResult, viewDef.name)}>
-            <BiExport size={20} />
           </button>
         </div>
       </div>
       <ViewTable viewResult={viewResult} viewDef={viewDef} />
-      {/* <ViewSettingsModal
-        setShowModal={setShowModal}
-        showModal={showModal}
-        viewDef={viewDef}
-        setViewDefs={setViewDefs}
-        handleSave={updateViewDef}
-      /> */}
     </div>
   );
 };
