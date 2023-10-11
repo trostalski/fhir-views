@@ -2,26 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --main-bg: #ecfaff; /* A very light blue color for the main background */
+    --primary-color: #2196f3; /* A bright blue color for primary elements */
+    --secondary-color: #03a9f4; /* A slightly lighter blue color for secondary elements */
+    --complementary-color: #ffc60a; /* An orange color for complementary elements */
+    --text-primary-color: #333; /* Dark text color for primary content */
+    --text-secondary-color: #909090; /* Slightly lighter text color for secondary content */
+    --cancel-button-color: #e8382b; /* A red color for cancel buttons */
+    --hover-cancel-button-color: #ba2b2b; /* A darker red color for hover effect on cancel buttons */
+    --confirm-button-color: #4caf50; /* A green color for confirm buttons */
+    --hover-confirm-button-color: #388e3c; /* A darker green color for hover effect on confirm buttons */
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
