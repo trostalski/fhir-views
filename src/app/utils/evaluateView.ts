@@ -46,7 +46,6 @@ export const evaluateView = (view: ViewDefinition, bundle: Bundle) => {
   result = result.filter((row: any) => {
     return Object.values(row).some((value) => value !== undefined);
   });
-  console.log("result", result);
 
   return result;
 };

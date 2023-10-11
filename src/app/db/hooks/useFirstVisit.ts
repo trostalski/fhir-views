@@ -13,7 +13,7 @@ const useFirstVisit = () => {
       localStorage.setItem("knownUser", "true");
       toastInfo("Welcome to FHIR Views, addded the template Views!");
     }
-  }, []);
+  }, [addViewDefinitions]);
 
   return {};
 };

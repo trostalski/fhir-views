@@ -19,10 +19,9 @@ const useViewDefinitions = () => {
       setState({ viewDefinitions });
     });
     setState({ ...state, loading: false });
-  }, []);
+  }, [state]);
 
   const deleteViewDefinition = (id: string) => {
-    console.log("deleteViewDefinition", id);
     db.viewDefinitions.delete(id).then(() => {
       db.viewDefinitions.toArray().then((viewDefinitions) => {
         setState({ viewDefinitions });
