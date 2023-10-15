@@ -19,7 +19,7 @@ const useViewDefinitions = () => {
       setState({ viewDefinitions });
     });
     setState({ ...state, loading: false });
-  }, [state]);
+  }, []);
 
   const deleteViewDefinition = (id: string) => {
     db.viewDefinitions.delete(id).then(() => {

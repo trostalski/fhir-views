@@ -8,7 +8,6 @@ import { evaluateView } from "./utils/evaluateView";
 import useViewDefinitions from "./db/hooks/useViewDefinitions";
 import useFirstVisit from "./db/hooks/useFirstVisit";
 import ViewSettingsModal from "./components/ViewSettingsModal";
-import { emptyViewDef } from "./utils/viewTemplates";
 
 interface State {
   fhirInput: string;
@@ -36,6 +35,7 @@ export default function Home() {
     loading,
     deleteViewDefinition,
   } = useViewDefinitions();
+
   useFirstVisit(); // sets the templates
 
   const handleInputChange = (evn: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -206,16 +206,18 @@ export default function Home() {
           />
         )}
       </div>
-      <ViewSettingsModal
-        handleChangeViewDef={handleChangeViewDef}
-        handleDeleteViewDef={handleDeleteViewDef}
-        handleCreateViewDef={handleCreateViewDef}
-        handleCloseModal={handleCloseModal}
-        showModal={state.showSettingsModal}
-        viewDefs={viewDefinitions}
-        viewDef={state.selectedViewDef}
-        handleSave={handleUpdateViewDef}
-      />
+      {state.showSettingsModal && (
+        <ViewSettingsModal
+          handleChangeViewDef={handleChangeViewDef}
+          handleDeleteViewDef={handleDeleteViewDef}
+          handleCreateViewDef={handleCreateViewDef}
+          handleCloseModal={handleCloseModal}
+          showModal={state.showSettingsModal}
+          viewDefs={viewDefinitions}
+          viewDef={state.selectedViewDef}
+          handleSave={handleUpdateViewDef}
+        />
+      )}
     </div>
   );
 }
