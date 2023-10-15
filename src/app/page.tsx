@@ -136,23 +136,6 @@ export default function Home() {
             instanceId={"view-template-select"}
             className="flex-grow"
             onChange={(e) => handleChangeViewDef(e!.value)}
-            // add delete button
-            styles={{
-              control: (provided, state) => ({
-                ...provided,
-                border: "1px solid #e2e8f0",
-                borderRadius: "0.375rem",
-                padding: "0.25rem",
-                fontSize: "0.875rem",
-                minHeight: "2.5rem",
-                boxShadow: state.isFocused ? "0 0 0 3px #f6ad55" : "none",
-              }),
-              option: (provided, state) => ({
-                ...provided,
-                backgroundColor: state.isFocused ? "#f6ad55" : "white",
-                color: state.isFocused ? "white" : "black",
-              }),
-            }}
             value={
               state.selectedViewDef
                 ? {
