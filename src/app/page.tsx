@@ -178,7 +178,7 @@ export default function Home() {
           onChange={handleInputChange}
         />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col">
         <span>Result</span>
         {state.viewResult && state.usedViewDef ? (
           <ViewContainer

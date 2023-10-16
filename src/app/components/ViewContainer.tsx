@@ -23,7 +23,9 @@ const ViewContainer = (props: ViewContainerProps) => {
     <div className="flex flex-col h-[90vh] pb-12 overflow-scroll">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row w-full gap-4">
-          <span className="font-bold">{"Result"}</span>
+          <span className="font-light text-sm">
+            {"Found " + viewResult.length + " Entries"}
+          </span>
           <div className="flex-grow" />
           <button
             className="transition hover:text-primary-color"
