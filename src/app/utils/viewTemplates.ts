@@ -77,7 +77,7 @@ export const mediationViewDef: ViewDefinition = {
     },
     {
       path: "authoredOn",
-      alias: "Datum",
+      alias: "Date",
     },
   ],
 };
@@ -89,16 +89,37 @@ export const observationViewDef: ViewDefinition = {
   select: [
     {
       path: "code.coding.display",
-      alias: "Observatie",
+      alias: "Display",
     },
     {
       path: "code.coding.code",
       alias: "Code",
     },
     {
-      path: "effectiveDateTime",
-      alias: "Datum",
+      path: "valueQuantity.value",
+      alias: "Value",
     },
+    {
+      path: "valueQuantity.unit",
+      alias: "Unit",
+    },
+    {
+      path: "referenceRange[0].low.value",
+      alias: "Low value",
+    },
+    {
+      path: "referenceRange[0].high.value",
+      alias: "High value",
+    },
+    {
+      path: "effectiveDateTime",
+      alias: "Date",
+    },
+    {
+      path: "subject.reference",
+      alias: "Patient",
+    },
+    { path: "encounter.reference", alias: "Encounter" },
   ],
 };
 
@@ -107,12 +128,12 @@ export const patientViewDef: ViewDefinition = {
   name: "Patient",
   resource: "Patient",
   select: [
-    { path: "id", alias: "id" },
-    { path: "name", alias: "name" },
-    { path: "identifier.value", alias: "identifier" },
-    { alias: "address", path: "address[0].text" },
-    { alias: "birthDate", path: "birthDate" },
-    { alias: "telecom", path: "telecom[0].value" },
+    { path: "id", alias: "ID" },
+    { path: "name", alias: "Name" },
+    { path: "identifier.value", alias: "Identifier" },
+    { alias: "Address", path: "address[0].text" },
+    { alias: "BirthDate", path: "birthDate" },
+    { alias: "Telecom", path: "telecom[0].value" },
   ],
   where: [{ path: "id" }],
 };
@@ -122,15 +143,15 @@ export const locationViewDef: ViewDefinition = {
   name: "Location",
   resource: "Location",
   select: [
-    { path: "id", alias: "id" },
-    { path: "name", alias: "name" },
-    { path: "alias", alias: "alias" },
-    { path: "identifier.value", alias: "identifier" },
-    { path: "description", alias: "description" },
-    { path: "status", alias: "status" },
-    { path: "partOf.reference", alias: "partOf" },
-    { path: "physicalType.coding.display", alias: "physicalType" },
-    { path: "type.coding.display", alias: "type" },
+    { path: "id", alias: "ID" },
+    { path: "name", alias: "Name" },
+    { path: "alias", alias: "Alias" },
+    { path: "identifier.value", alias: "Identifier" },
+    { path: "description", alias: "Description" },
+    { path: "status", alias: "Status" },
+    { path: "partOf.reference", alias: "PartOf" },
+    { path: "physicalType.coding.display", alias: "PhysicalType" },
+    { path: "type.coding.display", alias: "Type" },
   ],
   where: [],
 };
@@ -140,16 +161,16 @@ export const encounterViewDef: ViewDefinition = {
   name: "Encounter",
   resource: "Encounter",
   select: [
-    { path: "id", alias: "id" },
-    { path: "subject.reference", alias: "patient" },
-    { path: "period.start", alias: "start" },
-    { path: "period.end", alias: "end" },
-    { path: "status", alias: "status" },
-    { path: "type", alias: "type" },
-    { path: "participant[0].individual.reference", alias: "doctors" },
-    { path: "location.location.reference", alias: "locations" },
-    { path: "partOf.reference", alias: "partOf" },
-    { path: "class.display", alias: "class" },
+    { path: "id", alias: "ID" },
+    { path: "subject.reference", alias: "Patient" },
+    { path: "period.start", alias: "Start" },
+    { path: "period.end", alias: "End" },
+    { path: "status", alias: "Status" },
+    { path: "type", alias: "Type" },
+    { path: "participant[0].individual.reference", alias: "Doctors" },
+    { path: "location.location.reference", alias: "Locations" },
+    { path: "partOf.reference", alias: "PartOf" },
+    { path: "class.display", alias: "Class" },
   ],
 };
 
