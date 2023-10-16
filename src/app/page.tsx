@@ -178,14 +178,19 @@ export default function Home() {
           onChange={handleInputChange}
         />
       </div>
-      <div>
-        {state.viewResult && state.usedViewDef && (
+      <div className="flex flex-col gap-1">
+        <span>Result</span>
+        {state.viewResult && state.usedViewDef ? (
           <ViewContainer
             handleShowModal={handleShowModal}
             handleClearViewResult={handleClearViewResult}
             viewDef={state.usedViewDef}
             viewResult={state.viewResult}
           />
+        ) : (
+          <div className="flex flex-col items-center justify-center h-56 border rounded-md">
+            <span className="text-gray-400">No result to show.</span>
+          </div>
         )}
       </div>
       {state.showSettingsModal && (

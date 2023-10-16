@@ -1,12 +1,10 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
 import ViewTable from "./ViewTable";
-import { AiOutlineClose, AiOutlineLineChart } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BiExport } from "react-icons/bi";
-import ViewSettingsModal from "./ViewSettingsModal";
 import { ViewDefinition } from "../utils/types";
-import Spinner from "./Spinner";
 import { handleExportClick } from "../utils/utils";
 
 export type ViewResult = any;
@@ -22,7 +20,7 @@ const ViewContainer = (props: ViewContainerProps) => {
   const { viewDef, viewResult, handleClearViewResult, handleShowModal } = props;
 
   return (
-    <div className="flex flex-col max-h-[90vh] pb-12">
+    <div className="flex flex-col h-[90vh] pb-12 overflow-scroll">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row w-full gap-4">
           <span className="font-bold">{"Result"}</span>
