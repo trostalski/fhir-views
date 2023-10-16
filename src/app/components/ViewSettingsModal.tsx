@@ -101,7 +101,7 @@ const ViewSettingsModal = (props: ViewSettingsModalProps) => {
             <select
               className="border border-gray-300 rounded-md px-2 py-1"
               placeholder="Select View Definition"
-              value={viewDef.name}
+              value={viewDefs.find((vd) => vd.id === viewDef.id)?.name}
               onChange={(e) =>
                 setViewDef(
                   viewDefs.find((vd) => vd.name === e.target.value) ||

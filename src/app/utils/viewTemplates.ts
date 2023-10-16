@@ -135,6 +135,24 @@ export const locationViewDef: ViewDefinition = {
   where: [],
 };
 
+export const encounterViewDef: ViewDefinition = {
+  id: "7",
+  name: "Encounter",
+  resource: "Encounter",
+  select: [
+    { path: "id", alias: "id" },
+    { path: "subject.reference", alias: "patient" },
+    { path: "period.start", alias: "start" },
+    { path: "period.end", alias: "end" },
+    { path: "status", alias: "status" },
+    { path: "type", alias: "type" },
+    { path: "participant[0].individual.reference", alias: "doctors" },
+    { path: "location.location.reference", alias: "locations" },
+    { path: "partOf.reference", alias: "partOf" },
+    { path: "class.display", alias: "class" },
+  ],
+};
+
 export const viewTemplates = [
   activeConditionsViewDef,
   allConditionsViewDef,
@@ -142,4 +160,5 @@ export const viewTemplates = [
   observationViewDef,
   locationViewDef,
   patientViewDef,
+  encounterViewDef,
 ];

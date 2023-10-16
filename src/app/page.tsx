@@ -106,7 +106,6 @@ export default function Home() {
     }
     const res = evaluateView(state.selectedViewDef, jsonData);
     if (!res) {
-      toastError("Error evaluating view.");
       return;
     }
     setState({

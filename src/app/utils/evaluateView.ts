@@ -1,12 +1,24 @@
+import { toastError, toastInfo } from "../components/toasts";
 import { Bundle, ViewDefinition, ViewResult } from "./types";
 import { compile } from "fhirpath";
 
 const isBundle = (data: any) => {
-  return data.resourceType === "Bundle";
+  if (data.resourceType !== "Bundle") {
+    return false;
+  }
+  return true;
 };
 
 export const evaluateView = (view: ViewDefinition, bundle: Bundle) => {
   let result: ViewResult = [];
+  if (!isBundle(bundle)) {
+    toastError("Input is not a valid FHIR Bundle");
+    return;
+  }
+  if (!bundle.entry || bundle.entry.length === 0) {
+    toastInfo("Input Bundle has no entries");
+    return [];
+  }
   const whereConstraints = view.where || [];
   const selects = view.select;
   const removedResources: any[] = [];
@@ -38,7 +50,11 @@ export const evaluateView = (view: ViewDefinition, bundle: Bundle) => {
       if (!result[index]) {
         result[index] = {}; // Initialize result[index] if it doesn't exist
       }
-      result[index][select.alias || select.path] = evaluated[0];
+      if (evaluated.length > 1) {
+        result[index][select.alias || select.path] = evaluated.join(", ");
+      } else {
+        result[index][select.alias || select.path] = evaluated[0];
+      }
     }
   }
 

@@ -36,14 +36,14 @@ const ViewTable = (props: ViewTableProps) => {
   });
 
   return (
-    <table className="inline-block w-full text-xs h-full shadow-lg overflow-x-scroll border-separate">
-      <thead className="w-full bg-primary-color text-white text-left">
+    <table className="inline-block text-xs h-full shadow-lg overflow-x-scroll border-separate">
+      <thead className="bg-primary-color text-white text-left">
         {table.getHeaderGroups().map((headerGroup, index) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
               <th
                 key={header.id}
-                className={`w-full px-4 ${index === 0 && "rounded-tl-md"} ${
+                className={`px-4 ${index === 0 && "rounded-tl-md"} ${
                   index === table.getHeaderGroups().length - 1 &&
                   "rounded-tr-md"
                 }`}
