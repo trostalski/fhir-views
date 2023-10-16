@@ -39,7 +39,6 @@ const ViewTable = (props: ViewTableProps) => {
         ? JSON.stringify(info.getValue())
         : info.getValue(),
   }));
-  console.log("DATA: ", data);
 
   const table = useReactTable({
     data: data,
