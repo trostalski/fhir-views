@@ -53,21 +53,19 @@ const ViewTable = (props: ViewTableProps) => {
   });
 
   return (
-    <table className="inline-block text-xs grow shadow-lg overflow-scroll border-separate">
+    <table className="inline-block min-w-full text-xs rounded-md shadow-lg overflow-x-auto border-separate">
       <colgroup>
         {columns.map((column) => (
           <col key={column.id} className="w-full" />
         ))}
       </colgroup>
-      <thead className="bg-primary-color text-white text-left">
+      <thead className="bg-primary-color text-white">
         {table.getHeaderGroups().map((headerGroup, index) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
               <th
                 key={header.id}
-                className={`py-0.5 px-2 grow ${
-                  index === 0 && "rounded-tl-md"
-                } ${
+                className={`py-2 px-4 ${index === 0 && "rounded-tl-md"} ${
                   index === table.getHeaderGroups().length - 1 &&
                   "rounded-tr-md"
                 }`}
@@ -75,14 +73,13 @@ const ViewTable = (props: ViewTableProps) => {
                 {header.isPlaceholder ? null : (
                   <div className="flex flex-col">
                     <div
-                      className="flex flex-row shrink-0 w-full items-center justify-between cursor-pointer"
+                      className="flex justify-between items-center cursor-pointer"
                       onClick={header.column.getToggleSortingHandler()}
                     >
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-
                       <div className="flex flex-col items-center relative w-4 h-5">
                         <FaSortUp
                           className={`absolute top-0 ${
@@ -90,19 +87,19 @@ const ViewTable = (props: ViewTableProps) => {
                               ? "text-complementary-primary-color"
                               : "text-white"
                           }`}
-                          size={20}
+                          size={16}
                         />
                         <FaSortDown
-                          className={`absolute top-0 ${
+                          className={`absolute bottom-0 ${
                             header.column.getIsSorted() && sorting[0].desc
                               ? "text-complementary-primary-color"
                               : "text-white"
                           }`}
-                          size={20}
+                          size={16}
                         />
                       </div>
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col mt-1">
                       {header.column.getCanFilter() ? (
                         <TableFilter column={header.column} table={table} />
                       ) : null}
@@ -114,27 +111,27 @@ const ViewTable = (props: ViewTableProps) => {
           </tr>
         ))}
       </thead>
-      <tbody className="rounded-b-md h-full w-full overflow-scroll">
+      <tbody>
         {table.getRowModel().rows.map((row, index) => (
           <tr
             key={row.id}
             className={`${
               index % 2 === 0 ? "bg-white" : "bg-gray-100"
-            } transition hover:text-button-hover-color`}
+            } transition hover:bg-gray-200`}
           >
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="px-4">
+              <td key={cell.id} className="px-4 py-2">
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
           </tr>
         ))}
       </tbody>
-      <tfoot>
+      <tfoot className="bg-gray-200">
         {table.getFooterGroups().map((footerGroup) => (
           <tr key={footerGroup.id}>
             {footerGroup.headers.map((header) => (
-              <th key={header.id}>
+              <th key={header.id} className="py-2 px-4">
                 {header.isPlaceholder
                   ? null
                   : flexRender(

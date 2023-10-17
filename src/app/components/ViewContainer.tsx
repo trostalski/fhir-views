@@ -20,33 +20,32 @@ const ViewContainer = (props: ViewContainerProps) => {
   const { viewDef, viewResult, handleClearViewResult, handleShowModal } = props;
 
   return (
-    <div className="flex flex-col h-[90vh] pb-12 overflow-scroll">
-      <div className="flex flex-row justify-between items-center">
-        <div className="flex flex-row w-full gap-4">
-          <span className="font-light text-sm">
-            {"Found " + viewResult.length + " Entries"}
-          </span>
-          <div className="flex-grow" />
+    <div className="flex flex-col h-[90vh] pb-12 overflow-y-auto">
+      <div className="flex items-center justify-between mb-4 px-4 md:px-6">
+        <span className="text-gray-600 font-medium">
+          {`Found ${viewResult.length} Entries`}
+        </span>
+        <div className="flex space-x-4">
           <button
-            className="transition hover:text-primary-color"
+            className="transition hover:text-primary-color focus:outline-none focus:ring-2 focus:ring-primary-color"
             onClick={handleShowModal}
             title="Edit View"
           >
-            <IoSettingsOutline size={20} />
+            <IoSettingsOutline size={24} className="align-middle" />
           </button>
           <button
             onClick={() => handleExportClick(viewResult, viewDef.name)}
-            className="transition hover:text-primary-color"
+            className="transition hover:text-primary-color focus:outline-none focus:ring-2 focus:ring-primary-color"
             title="Export CSV"
           >
-            <BiExport size={20} />
+            <BiExport size={24} className="align-middle" />
           </button>
           <button
-            className="transition hover:text-cancel-button-color"
+            className="transition hover:text-cancel-button-color focus:outline-none focus:ring-2 focus:ring-cancel-button-color"
             onClick={handleClearViewResult}
             title="Clear ViewResult"
           >
-            <AiOutlineClose size={20} />
+            <AiOutlineClose size={24} className="align-middle" />
           </button>
         </div>
       </div>

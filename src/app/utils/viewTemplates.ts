@@ -8,9 +8,9 @@ export const emptyViewDef: ViewDefinition = {
   where: [],
 };
 
-export const activeConditionsViewDef: ViewDefinition = {
+export const conditionsViewDef: ViewDefinition = {
   id: "1",
-  name: "Active conditions",
+  name: "Condition",
   resource: "Condition",
   select: [
     {
@@ -26,64 +26,23 @@ export const activeConditionsViewDef: ViewDefinition = {
       alias: "Datum",
     },
     {
-      path: "clinicalStatus.coding.code",
-      alias: "Status",
-    },
-  ],
-  where: [
-    {
-      path: "clinicalStatus.coding.code='active'",
-      desription: "Status",
-    },
-  ],
-};
-
-export const allConditionsViewDef: ViewDefinition = {
-  id: "2",
-  name: "Inactive conditions",
-  resource: "Condition",
-  select: [
-    {
-      path: "code.coding.display",
-      alias: "Diagnose",
+      path: "category.coding.display",
+      alias: "Category",
     },
     {
-      path: "code.coding.code",
-      alias: "Code",
+      path: "subject",
+      alias: "Patient",
     },
-    {
-      path: "onsetDateTime",
-      alias: "Datum",
-    },
+    { path: "recorder.reference", alias: "Recorder" },
     {
       path: "clinicalStatus.coding.code",
       alias: "Status",
-    },
-  ],
-};
-
-export const mediationViewDef: ViewDefinition = {
-  id: "3",
-  name: "Medication",
-  resource: "MedicationRequest",
-  select: [
-    {
-      path: "medicationCodeableConcept.coding.display",
-      alias: "Drug",
-    },
-    {
-      path: "medicationCodeableConcept.coding.code",
-      alias: "Code",
-    },
-    {
-      path: "authoredOn",
-      alias: "Date",
     },
   ],
 };
 
 export const observationViewDef: ViewDefinition = {
-  id: "4",
+  id: "2",
   name: "Observation",
   resource: "Observation",
   select: [
@@ -124,7 +83,7 @@ export const observationViewDef: ViewDefinition = {
 };
 
 export const patientViewDef: ViewDefinition = {
-  id: "5",
+  id: "3",
   name: "Patient",
   resource: "Patient",
   select: [
@@ -139,7 +98,7 @@ export const patientViewDef: ViewDefinition = {
 };
 
 export const locationViewDef: ViewDefinition = {
-  id: "6",
+  id: "4",
   name: "Location",
   resource: "Location",
   select: [
@@ -157,7 +116,7 @@ export const locationViewDef: ViewDefinition = {
 };
 
 export const encounterViewDef: ViewDefinition = {
-  id: "7",
+  id: "5",
   name: "Encounter",
   resource: "Encounter",
   select: [
@@ -175,9 +134,7 @@ export const encounterViewDef: ViewDefinition = {
 };
 
 export const viewTemplates = [
-  activeConditionsViewDef,
-  allConditionsViewDef,
-  mediationViewDef,
+  conditionsViewDef,
   observationViewDef,
   locationViewDef,
   patientViewDef,

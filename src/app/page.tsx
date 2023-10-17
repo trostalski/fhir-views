@@ -118,53 +118,50 @@ export default function Home() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col h-full py-2 xl:px-32 gap-2">
-      <div className="flex flex-col w-full gap-1">
-        <div className="flex flex-row items-center">
-          <span>Resource View Definition</span>
-          <div className="flex-grow" />
+    <div className="flex flex-col h-full p-4 md:p-8 gap-4 xl:px-32">
+      <div className="flex flex-col w-full gap-2">
+        <div className="flex items-center justify-between">
+          <span className="text-lg font-semibold">
+            Resource View Definition
+          </span>
           <button
-            className="w-40 px-2 py-1 text-white bg-primary-color rounded-md transition hover:bg-secondary-color"
+            className="px-4 py-2 text-white bg-primary-color rounded-md transition hover:bg-secondary-color focus:ring-2 focus:ring-primary-color focus:outline-none"
             onClick={handleShowModal}
           >
             Settings
           </button>
         </div>
-        <div className="flex flex-row">
-          <Select
-            instanceId={"view-template-select"}
-            className="flex-grow"
-            onChange={(e) => handleChangeViewDef(e!.value)}
-            value={
-              state.selectedViewDef
-                ? {
-                    label: state.selectedViewDef.name,
-                    value: state.selectedViewDef.id,
-                  }
-                : undefined
-            }
-            options={viewDefinitions.map((view) => {
-              return {
-                label: view.name,
-                value: view.id,
-              };
-            })}
-          />
-        </div>
+        <Select
+          instanceId={"view-template-select"}
+          className="w-full"
+          onChange={(e) => handleChangeViewDef(e!.value)}
+          value={
+            state.selectedViewDef
+              ? {
+                  label: state.selectedViewDef.name,
+                  value: state.selectedViewDef.id,
+                }
+              : undefined
+          }
+          options={viewDefinitions.map((view) => {
+            return {
+              label: view.name,
+              value: view.id,
+            };
+          })}
+        />
       </div>
-      <div className="flex flex-col gap-1">
-        <div className="flex flex-row items-end">
-          <span>FHIR Input</span>
-          <div className="flex-grow" />
-          <div className="flex flex-row gap-4">
-            <label
-              className={`px-2 py-1 text-white bg-primary-color rounded-md cursor-pointer transition hover:bg-secondary-color`}
-            >
+
+      <div className="flex flex-col gap-2">
+        <div className="flex items-end justify-between">
+          <span className="text-lg font-semibold">FHIR Input</span>
+          <div className="flex gap-4">
+            <label className="flex items-center px-4 py-2 text-white bg-primary-color rounded-md cursor-pointer transition hover:bg-secondary-color focus:ring-2 focus:ring-primary-color focus:outline-none">
               <input type="file" hidden onChange={handleFileUpload} />
               File Upload
             </label>
             <button
-              className="px-2 py-1 text-white bg-confirm-button-color rounded-md cursor-pointer transition hover:bg-hover-confirm-button-color"
+              className="px-4 py-2 text-white bg-confirm-button-color rounded-md cursor-pointer transition hover:bg-hover-confirm-button-color focus:ring-2 focus:ring-confirm-button-color focus:outline-none"
               onClick={handleRun}
             >
               Run
@@ -173,13 +170,14 @@ export default function Home() {
         </div>
         <textarea
           placeholder="Paste FHIR JSON-Data here..."
-          className="rounded-md border h-56 overflow-scroll font-mono text-xs px-4 py-2"
+          className="w-full h-60 rounded-md border p-4 font-mono text-xs resize-none shadow-md focus:ring-2 focus:ring-primary-color focus:outline-none"
           value={state.fhirInput}
           onChange={handleInputChange}
         />
       </div>
-      <div className="flex flex-col">
-        <span>Result</span>
+
+      <div className="flex flex-col gap-2">
+        <span className="text-lg font-semibold">Result</span>
         {state.viewResult && state.usedViewDef ? (
           <ViewContainer
             handleShowModal={handleShowModal}
@@ -188,11 +186,12 @@ export default function Home() {
             viewResult={state.viewResult}
           />
         ) : (
-          <div className="flex flex-col items-center justify-center h-56 border rounded-md">
+          <div className="flex items-center justify-center h-60 border rounded-md shadow-md">
             <span className="text-gray-400">No result to show.</span>
           </div>
         )}
       </div>
+
       {state.showSettingsModal && (
         <ViewSettingsModal
           handleChangeViewDef={handleChangeViewDef}
