@@ -133,10 +133,62 @@ export const encounterViewDef: ViewDefinition = {
   ],
 };
 
+export const medicationRequestViewDef: ViewDefinition = {
+  id: "6",
+  name: "MedicationRequest",
+  resource: "MedicationRequest",
+  select: [
+    { path: "status", alias: "Status" },
+    { path: "intent", alias: "Intent" },
+    { path: "medicationReference.reference", alias: "Medication" },
+    { path: "subject.reference", alias: "Patient" },
+    { path: "authoredOn", alias: "Date" },
+  ],
+};
+
+export const medicationViewDef: ViewDefinition = {
+  id: "7",
+  name: "Medication",
+  resource: "Medication",
+  select: [
+    { path: "id", alias: "ID" },
+    { path: "code.coding.display", alias: "Display" },
+    { path: "code.coding.code", alias: "Code" },
+    { path: "form.coding.display", alias: "Form" },
+    { path: "ingredient[0].itemReference.reference", alias: "Ingredient" },
+    { path: "ingredient[0].strength.value", alias: "Strength" },
+    { path: "ingredient[0].strength.unit", alias: "Unit" },
+    { path: "ingredient[0].strength.code", alias: "Code" },
+    { path: "ingredient[0].strength.system", alias: "System" },
+  ],
+};
+
+export const diagnosticReportViewDef: ViewDefinition = {
+  id: "8",
+  name: "DiagnosticReport",
+  resource: "DiagnosticReport",
+  select: [
+    { path: "id", alias: "ID" },
+    { path: "code.coding.display", alias: "Display" },
+    { path: "code.coding.code", alias: "Code" },
+    { path: "subject.reference", alias: "Patient" },
+    { path: "effectiveDateTime", alias: "Date" },
+    { path: "status", alias: "Status" },
+    { path: "category.coding.display", alias: "Category" },
+    { path: "presentedForm[0].title", alias: "Document" },
+    { path: "presentedForm[0].contentType", alias: "Document Type" },
+    { path: "performer[0].reference", alias: "Performer" },
+    { path: "encounter.reference", alias: "Encounter" },
+  ],
+};
+
 export const viewTemplates = [
   conditionsViewDef,
   observationViewDef,
   locationViewDef,
   patientViewDef,
   encounterViewDef,
+  medicationRequestViewDef,
+  medicationViewDef,
+  diagnosticReportViewDef,
 ];
