@@ -22,11 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />{" "}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={inter.className + " bg-main-bg"}>
         <TopBar />
-        <main className="container h-screen w-screen mx-auto pt-10">
+        <main className="container h-screen w-screen mx-auto pt-10 mb-8">
           {children}
         </main>
         <ToastContainer autoClose={3000} theme="light" />

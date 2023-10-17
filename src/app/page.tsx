@@ -118,7 +118,7 @@ export default function Home() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col h-full p-4 md:p-8 gap-4 xl:px-32">
+    <div className="flex flex-col h-full gap-4 py-4">
       <div className="flex flex-col w-full gap-2">
         <div className="flex items-center justify-between">
           <span className="text-lg font-semibold">
