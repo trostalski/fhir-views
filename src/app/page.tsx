@@ -170,7 +170,7 @@ export default function Home() {
         </div>
         <textarea
           placeholder="Paste FHIR JSON-Data here..."
-          className="w-full h-60 rounded-md border p-4 font-mono text-xs resize-none shadow-md focus:ring-2 focus:ring-primary-color focus:outline-none"
+          className="w-full h-60 rounded-md border p-4 font-mono text-xs shadow-md focus:ring-2 focus:ring-primary-color focus:outline-none"
           value={state.fhirInput}
           onChange={handleInputChange}
         />

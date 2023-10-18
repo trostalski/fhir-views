@@ -158,13 +158,27 @@ export const medicationViewDef: ViewDefinition = {
     { path: "ingredient[0].itemReference.reference", alias: "Ingredient" },
     { path: "ingredient[0].strength.value", alias: "Strength" },
     { path: "ingredient[0].strength.unit", alias: "Unit" },
-    { path: "ingredient[0].strength.code", alias: "Code" },
     { path: "ingredient[0].strength.system", alias: "System" },
   ],
 };
 
-export const diagnosticReportViewDef: ViewDefinition = {
+export const medicationStatementViewDef: ViewDefinition = {
   id: "8",
+  name: "MedicationStatement",
+  resource: "MedicationStatement",
+  select: [
+    { path: "id", alias: "ID" },
+    { path: "status", alias: "Status" },
+    { path: "medicationReference.reference", alias: "Medication" },
+    { path: "dateAsserted", alias: "Date Asserted" },
+    { path: "subject.reference", alias: "Patient" },
+    { path: "effectivePeriod.start", alias: "Start" },
+    { path: "effectivePeriod.end", alias: "End" },
+  ],
+};
+
+export const diagnosticReportViewDef: ViewDefinition = {
+  id: "9",
   name: "DiagnosticReport",
   resource: "DiagnosticReport",
   select: [
@@ -190,5 +204,6 @@ export const viewTemplates = [
   encounterViewDef,
   medicationRequestViewDef,
   medicationViewDef,
+  medicationStatementViewDef,
   diagnosticReportViewDef,
 ];

@@ -27,9 +27,6 @@ export const evaluateView = (view: ViewDefinition, bundle: Bundle) => {
   for (const whereConstraint of whereConstraints) {
     const compiled = compile(whereConstraint.path);
     for (const resource of resources) {
-      if (resource.resourceType !== view.resource) {
-        continue;
-      }
       const evaluated = compiled(resource);
       if (!evaluated || !evaluated[0] || evaluated.length == 0) {
         // constraint not met and resource should be removed
@@ -39,13 +36,13 @@ export const evaluateView = (view: ViewDefinition, bundle: Bundle) => {
   }
 
   const filteredResources = resources.filter(
-    (r) => !removedResources.includes(r)
+    (r) => !removedResources.includes(r) && r.resourceType === view.resource
   );
 
   for (const select of selects) {
     const compiled = compile(select.path);
     for (const index in filteredResources) {
-      const resource = resources[index];
+      const resource = filteredResources[index];
       const evaluated = compiled(resource);
       if (!result[index]) {
         result[index] = {}; // Initialize result[index] if it doesn't exist
