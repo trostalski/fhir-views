@@ -1,6 +1,6 @@
 # FHIR-Views
 
-An easy way to quickly inspect FHIR Bundles.
+An easy way to quickly inspect FHIR Bundles in a tabular format.
 
 Visit the project under: [https://fhir-views.vercel.app/](https://fhir-views.vercel.app/)
 
