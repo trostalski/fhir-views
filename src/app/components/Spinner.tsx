@@ -1,11 +1,4 @@
-import { useState, CSSProperties } from "react";
 import BounceLoader from "react-spinners/BounceLoader";
-
-const override: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
 
 const Spinner = () => {
   return (

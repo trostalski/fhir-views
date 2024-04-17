@@ -1,4 +1,3 @@
-// db.ts
 import Dexie, { Table } from "dexie";
 import { ViewDefinition } from "../utils/types";
 
